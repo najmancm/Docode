@@ -16,9 +16,17 @@ def home(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Main API
     path('api/', home),
+
+    # Document upload API
     path('api/documents/', include('documents.urls')),
+
+    # PDF extraction API
+    path('api/extractor/', include('extractor.urls')),
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(
