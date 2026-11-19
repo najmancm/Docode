@@ -105,3 +105,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
 }
+
+# DOCODE MEDIA SETTINGS
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
