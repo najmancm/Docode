@@ -3,11 +3,12 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-t06vz-xa-*^t_)br^qm^tsbn$13ue&4@jhl2i^6m485_wvsmcf'
+SECRET_KEY = 'replace-this-with-a-new-secret-key-before-deployment'
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -26,8 +27,11 @@ INSTALLED_APPS = [
     'accounts',
     'documents',
     'converter',
+    'extractor',
 ]
 
+
+# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -39,8 +43,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'config.urls'
 
+
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -56,15 +63,18 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# Database (SQLite for initial development)
+
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -82,22 +92,27 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Africa/Mogadishu'
 USE_I18N = True
 USE_TZ = True
 
+
 # Static files
 STATIC_URL = 'static/'
+
 
 # Default primary key
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# DOCODE CORS SETTINGS
+
+# DOCODE CORS settings
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
 ]
+
 
 # Django REST Framework
 REST_FRAMEWORK = {
@@ -106,6 +121,7 @@ REST_FRAMEWORK = {
     ],
 }
 
-# DOCODE MEDIA SETTINGS
+
+# DOCODE Media settings
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
