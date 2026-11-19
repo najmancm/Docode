@@ -42,8 +42,11 @@ class PDFExtractionView(APIView):
                 "data": extracted_data
             }, status=status.HTTP_200_OK)
 
-        except Exception:
+        except Exception as error:
+
+            print("PDF EXTRACTION ERROR:", repr(error))
+
             return Response(
-                {"error": "Unable to extract this PDF. Please check the file."},
+                {"error": str(error)},
                 status=status.HTTP_400_BAD_REQUEST
             )
