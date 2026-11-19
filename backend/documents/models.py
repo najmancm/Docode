@@ -26,5 +26,10 @@ class Document(models.Model):
 
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
+    extracted_data = models.JSONField(
+        null=True,
+        blank=True
+    )
+
     def __str__(self):
         return self.title
