@@ -348,7 +348,6 @@ function App() {
     ['dashboard', 'Dashboard', 'dashboard'],
     ['converter', 'Convert Document', 'convert'],
     ['documents', 'My Documents', 'documents'],
-    ['history', 'Conversion History', 'history'],
     ['settings', 'Settings', 'settings'],
   ]
 
@@ -366,7 +365,6 @@ function App() {
             {activePage === 'dashboard' && <Dashboard documents={documents} openDocument={openDocument} />}
             {activePage === 'converter' && <Converter openDocument={openDocument} refreshDocuments={refreshDocuments} />}
             {activePage === 'documents' && <DocumentLibrary documents={documents} openDocument={openDocument} refreshDocuments={refreshDocuments} />}
-            {activePage === 'history' && <><div className="page-heading"><div><p className="eyebrow">ACTIVITY</p><h1>Conversion History</h1></div></div><section className="panel"><div className="panel-header"><div><p className="eyebrow">ALL ACTIVITY</p><h2>Conversions</h2></div></div><DocumentTable documents={documents} openDocument={openDocument} /></section></>}
             {activePage === 'settings' && <Settings />}
           </div>
         )}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Document(models.Model):
@@ -10,32 +11,35 @@ class Document(models.Model):
         ('deleted', 'Deleted'),
     ]
 
+    TEMPLATE_CHOICES = [
+        ('academy', 'Academy'),
+        ('editorial', 'Editorial'),
+        ('interactive', 'Interactive'),
+        ('presentation', 'Presentation'),
+        ('modern', 'Modern'),
+        ('minimal', 'Minimal'),
+        ('corporate', 'Corporate'),
+        ('workbook', 'Workbook'),
+    ]
+
     title = models.CharField(max_length=255)
 
-    original_file = models.FileField(
-        upload_to='documents/'
-    )
+    original_file = models.FileField(upload_to='documents/')
 
     file_type = models.CharField(max_length=20)
 
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
-        default='uploaded'
+        default='uploaded',
     )
 
     uploaded_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    extracted_data = models.JSONField(
-        null=True,
-        blank=True
-    )
+    extracted_data = models.JSONField(null=True, blank=True)
 
-    generated_html = models.TextField(
-        null=True,
-        blank=True
-    )
+    generated_html = models.TextField(null=True, blank=True)
 
     conversion_error = models.TextField(
         null=True,
@@ -43,25 +47,15 @@ class Document(models.Model):
         default=None,
     )
 
-    deleted_at = models.DateTimeField(
-        null=True,
-        blank=True,
-    )
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
     selected_template = models.CharField(
         max_length=20,
-        choices=[
-            ('academy', 'Academy'),
-            ('editorial', 'Editorial'),
-            ('interactive', 'Interactive'),
-            ('presentation', 'Presentation'),
-        ],
+        choices=TEMPLATE_CHOICES,
         default='academy',
     )
 
     def soft_delete(self):
-        from django.utils import timezone
-
         self.deleted_at = timezone.now()
         self.status = 'deleted'
         self.save(update_fields=['deleted_at', 'status', 'updated_at'])

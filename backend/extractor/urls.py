@@ -1,3 +1,4 @@
+
 from django.urls import path
 
 from .views import (
@@ -15,48 +16,48 @@ from .views import (
 
 urlpatterns = [
     path(
-        '<int:document_id>/extract/',
+        "<int:document_id>/extract/",
         DocumentExtractionView.as_view(),
-        name='document-extract'
+        name="document-extract",
     ),
     path(
-        '<int:document_id>/pdf-extract/',
+        "<int:document_id>/pdf-extract/",
         PDFExtractionView.as_view(),
-        name='pdf-extract'
+        name="pdf-extract",
     ),
     path(
-        '<int:document_id>/data/',
+        "<int:document_id>/data/",
         ExtractedDataView.as_view(),
-        name='extracted-data'
+        name="extracted-data",
     ),
     path(
-        '<int:document_id>/preview/',
+        "<int:document_id>/preview/",
         HTMLPreviewView.as_view(),
-        name='html-preview'
+        name="html-preview",
     ),
     path(
-        '<int:document_id>/download/',
+        "<int:document_id>/download/",
         HTMLDownloadView.as_view(),
-        name='html-download'
+        name="html-download",
     ),
     path(
-        'templates/',
+        "templates/",
         TemplateCatalogView.as_view(),
-        name='template-catalog'
+        name="template-catalog",
     ),
     path(
-        '<int:document_id>/select-template/',
+        "<int:document_id>/select-template/",
         TemplateSelectionView.as_view(),
-        name='template-select'
+        name="template-select",
     ),
     path(
-        '<int:document_id>/generate/',
+        "<int:document_id>/generate/",
         GenerateDocumentView.as_view(),
-        name='document-generate'
+        name="document-generate",
     ),
     path(
-        '<int:document_id>/download-assets/',
+        "<int:document_id>/download-assets/",
         AssetsDownloadView.as_view(),
-        name='assets-download'
+        name="assets-download",
     ),
 ]
